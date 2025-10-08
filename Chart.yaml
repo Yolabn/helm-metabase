@@ -1,0 +1,19 @@
+apiVersion: v2
+name: metabase
+description: Chart de Helm para desplegar Metabase con PostgreSQL
+type: application
+version: 1.0.0
+appVersion: "0.50.0"  # ✅ CORREGIDO: Versión semver válida
+home: https://www.metabase.com/
+icon: https://www.metabase.com/images/logo.svg
+sources:
+  - https://github.com/metabase/metabase
+maintainers:
+  - name: Yolabn
+    email: admin@example.com
+keywords:
+  - analytics
+  - business-intelligence
+  - dashboard
+  - metabase
+  - postgresql
