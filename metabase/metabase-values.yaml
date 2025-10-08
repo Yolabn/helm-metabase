@@ -1,0 +1,43 @@
+# metabase-values.yaml
+
+# --- Configuración General ---
+replicaCount: 1
+
+# --- Configuración de la Base de Datos ---
+
+image:
+  registry: docker.io
+  # 1. Volvemos al repositorio principal, no al 'legacy'
+  repository: metabase/metabase
+  # 2. Usamos el tag 'latest'
+  tag: latest
+  digest: ""
+
+database:
+  type: postgres
+  
+  # Genera una nueva clave para Metabase con 'openssl rand -base64 32'
+  encryptionKey: "X1/rDuIWc+KbT2hjncAywknQJcT2yPL2ir7Lwf8Y+T8="
+
+  # Le decimos al chart que use el Secret que hemos definido en nuestro YAML.
+  existingSecret: "metabase-kaos-database"
+
+  secret:
+    enabled: false
+
+  # Host del servicio de PostgreSQL (¡Verifícalo!)
+  host: "postgresql-kaos.kaos-prod.svc.cluster.local"
+  port: 5432
+  
+  # Nombre de la base de datos que creamos en PostgreSQL
+  dbname: "metabase_prod_db"
+  
+  # Usuario de la base de datos
+  username: "postgres"
+  
+  # La misma contraseña que usaste para desplegar PostgreSQL
+  password: "3Ml8vsMHjSv9G45vNlyqKU+uTkxbOx1hfpFG5By2DO4="
+
+# --- Desactivar el Sub-chart de PostgreSQL ---
+postgresql:
+  enabled: false

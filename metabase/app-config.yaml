@@ -1,0 +1,12 @@
+repositories:
+  - name: mm-platform-sre-prod
+    url: europe-docker.pkg.dev/mm-platform-sre-prod/helm-charts-public
+    oci: true
+
+releases:
+  - name: metabase-kaos
+    namespace: kaos-prod
+    chart: mm-platform-sre-prod/metabase/metabase
+    version: 0.13.2
+    values:
+    - values-metabase.yaml
